@@ -10,14 +10,18 @@
 <body>
     <h1>PANEL PRINCIPAL</h1>
     <h3>Bienvenido usuario: </h3>
-    <a href="">ES (Español)</a>|<a href="">EN (English)</a>
+    <a href="panelPrincipal.php?lang=es">ES (Español)</a>|<a href="panelPrincipal.php?lang=en">EN (English)</a>
     <br>
     <a href="">Cerrar sesión</a>
     <h2>Lista de productos</h2>
     <?php
-    // Especificar la ruta del archivo
-    $file_path = true ? './categorias_es.txt' : './categorias_en.txt';
 
+    if(!isset($_GET["lang"]) || $_GET["lang"] == "es"){
+        $file_path = 'categorias_es.txt';
+    }else{
+        $file_path = 'categorias_en.txt';
+    }
+       
     // Abrir el archivo en modo lectura y especificar un puntero
     $file_pointer = fopen($file_path, 'r');
 
