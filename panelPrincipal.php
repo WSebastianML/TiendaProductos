@@ -1,3 +1,9 @@
+<?php
+    session_start();
+    if(!isset($_SESSION["nombre"]) && !isset($_SESSION["clave"])){
+        header("location:index.php");
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,10 +15,10 @@
 
 <body>
     <h1>PANEL PRINCIPAL</h1>
-    <h3>Bienvenido usuario: </h3>
+    <h3>Bienvenido usuario: <?php echo $_SESSION["nombre"] ?> </h3>
     <a href="panelPrincipal.php?lang=es">ES (Español)</a>|<a href="panelPrincipal.php?lang=en">EN (English)</a>
     <br>
-    <a href="">Cerrar sesión</a>
+    <a href="cerrarSesion.php">Cerrar sesión</a>
     <h2>Lista de productos</h2>
     <?php
 
